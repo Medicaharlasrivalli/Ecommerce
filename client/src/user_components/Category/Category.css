@@ -1,0 +1,27 @@
+.product-grid {
+    display: flex; /* Use flexbox for layout */
+    flex-wrap: wrap; /* Allow items to wrap on multiple lines */
+    margin: 5px;
+    margin-left: 135px;
+  }
+
+  .product-item {
+    flex: 0 0 20%; /* Set width to 25% of available space */
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: center;
+  }
+
+  .product-item img {
+    width: 100%;
+    height: 75%; /* Adjust height as needed */
+  }
+
+  .product-item h3 {
+    margin-top: 5px;
+    font-size: small;
+  }
+  .product-grid :hover{
+    background-color:lightgray;
+  }

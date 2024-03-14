@@ -1,0 +1,150 @@
+.product-view {
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping on small screens */
+    margin: 10px;
+    padding: 10px; /* Add basic padding */
+    border: 1px solid #ddd; /* Optional border for better visibility */
+  }
+
+  .product-image {
+    flex: 1;
+    width: 35%; /* Set image width */
+    /* Additional image styling (adjust as needed) */
+    background-color: #f0f0f0; /* Placeholder background */
+    padding: 5px; /* Add some padding around the image */
+    border: 1px solid #ddd; /* Optional border for the image */
+    position: relative; 
+    display: flex; 
+    justify-content: center; 
+  }
+ 
+.product-image img{
+    width:650px;
+    height: 700px;
+    padding-left: 18px;
+}
+
+.previous, .next {
+  position: absolute; /* Positions buttons on top of the image */
+  top: 50%; /* Centers buttons vertically */
+  transform: translateY(-50%); /* Adjusts vertical position further */
+  color: black; /* Button text color */
+  background-color:transparent; /* Button background color */
+  padding: 10px; /* Adjust padding for button size */
+  font-size: 50px; /* Adjust font size for button text */
+  text-decoration: none; /* Removes underline from text */
+  opacity: 0.5; /* Semi-transparent buttons initially */
+  border: none;
+}
+
+.product-image:hover .previous,
+.product-image:hover .next {
+  opacity: 1; /* Buttons become fully visible on hover */
+}
+
+.previous {
+  left: 10px; /* Positions the previous button */
+}
+
+.next {
+  right: 10px; /* Positions the next button */
+}
+  .product-details {
+    flex:1;
+    width: 75%; /* Set details width */
+    padding: 10px; /* Add padding for content */
+    /* Additional styling for details section (optional) */
+    padding-top: 100px;
+  }
+
+  .product-name {
+    margin-top: 0; /* Remove default top margin */
+    font-weight: bold; /* Make product name stand out */
+    text-transform: uppercase;
+  }
+
+  .product-details h4,
+  .product-details p {
+    margin-bottom: 5px; /* Add some spacing between elements */
+  }
+
+  .details {
+    /* Styling for the details section (optional) */
+  }
+
+  .details ul {
+    list-style: none; /* Remove default bullet points */
+    padding: 0; /* Reset default padding */
+    margin: 0; /* Reset default margin */
+  }
+
+  .details li {
+    margin-bottom: 5px; /* Add spacing between list items */
+  }
+
+  .add-to-cart {
+    display: inline; /* Ensure button takes up full width */
+    margin-top: 10px; /* Add some space above the button */
+    /* Button styling (adjust as needed) */
+    background-color:black;
+    color: #fff;
+    margin-left: 40px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer; /* Indicate clickable behavior */
+  }
+  .quantity-control {
+    display: flex;
+    align-items: center;
+  }
+ .left{
+    margin-left: 40px;
+    margin-right: 10px;
+    width: 800px;
+  }
+  .right{
+    margin-left: 10px;
+  }
+  /* Responsiveness (optional) */
+  @media only screen and (max-width: 768px) {
+    .product-view {
+      flex-direction: column; /* Stack elements vertically on small screens */
+    }
+
+    .product-image,
+    .product-details {
+      width: 100%; /* Allocate full width on small screens */
+    }
+  }
+  .price{
+    padding-top: 50px;
+    font-size: large;
+    font-weight:900;
+    color: seagreen;
+  }
+ .add-to-cart:click{
+  background-color: green;
+ }
+ .wishlist-button {
+    display: inline; 
+    margin-top: 10px;
+    margin-left: 40px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer; 
+   border: 1px solid #ddd;
+  }
+.heart {
+  font-size: 20px;
+  margin-right: 5px;
+  color: #ccc; /* Default color */
+}
+
+.heart.active {
+  color: red; /* Color when wishlisted */
+}
+.buttons{
+  display: flex;
+}

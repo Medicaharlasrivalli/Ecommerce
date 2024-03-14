@@ -1,0 +1,76 @@
+.navigation-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #f0f0f0;
+  }
+  
+  .nav-left {
+    display: flex;
+    align-items: center;
+  }
+  .cart-icon-container {
+    position: relative; /* Enable absolute positioning for counter */
+  }
+  
+  .cart-counter {
+    position: absolute;
+    top: -5px; /* Position counter slightly above the icon */
+    left: 10px; /* Position counter to the right of the icon */
+    padding: 2px 5px;
+    border-radius: 50%; /* Create a circular counter */
+    font-size: 12px;
+    background-color: red; /* Adjust color as needed */
+    color: white;
+  }
+  .nav-links {
+    margin-left: 20px;
+    list-style: none;
+    padding: 0;
+    text-align: center;
+  }
+  .nav-links a{
+    margin-left: 15px;
+    text-decoration: none;
+    color: black;
+    font-weight: 500;
+  }
+  .nav-links li {
+    margin-right: 15px;
+  }
+  
+  .nav-right {
+    display: flex;
+    align-items: center;
+  }
+  
+  .search-bar {
+  display: flex; /* Maintain flexbox for positioning */
+  align-items: center; /* Align icon and input vertically */
+  margin-right: 20px;
+}
+
+.search-input {
+  height: 35px; /* Adjust height as desired */
+  padding-left: 30px; /* Make space for the icon */
+  border: 1px solid #ccc; /* Add a border */
+  border-radius: 20px; /* Add rounded corners */
+}
+.search-icon{
+    padding-left: 30px;
+}
+
+  
+  .user-icons {
+    list-style: none;
+    padding: 0;
+  }
+  .user-icons a{
+    color: black;
+    margin: 20px;
+  }
+  .user-icons li {
+    margin-left: 15px;
+  }
+  
