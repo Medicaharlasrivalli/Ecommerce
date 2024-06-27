@@ -6,8 +6,8 @@ function View() {
     const [product, setProduct] = useState([]);
     const [images,setImages]=useState([]);
     useEffect(() => {
-        axios.get('http://localhost:8081/products/' + id).then(result => {
-            setProduct(result.data[0])
+        axios.get('http://localhost:8080/products/' + id).then(result => {    
+        setProduct(result.data[0])
             const img=result.data[0].image.split(',');
             console.log(img);
             setImages(img)
@@ -18,8 +18,8 @@ function View() {
         <div class='container'>
             <div style={{paddingInline:"10px",flexDirection:"row"}}>
                 <div class='image' style={{ alignContent: "flex-start" ,flexDirection:"column"}}>
-                    {images.map(image=><img alt="" src={`http://localhost:8081/images/`+image} style={{ height: "50%", width: "50%", paddingTop: "20px" ,flexDirection:"column"}}/>)}
-                    {/* <img src={`http://localhost:8081/images/`} style={{ height: "50%", width: "50%", paddingTop: "20px" ,flexDirection:"column"}} alt='' /> */}
+                    {/* {images.map(image=><img alt="" src={`http://localhost:8080/images/`+image.replace(/\s/g, "")} style={{ height: "50%", width: "50%", paddingTop: "20px" ,flexDirection:"column"}}/>)} */}
+                    <img src={`http://localhost:8080/images/`} style={{ height: "50%", width: "50%", paddingTop: "20px" ,flexDirection:"column"}} alt='' />
                 </div>
                 <div class='text-content' style={{paddingLeft:"300px",paddingInline:"20px",flexDirection:"column"}}>
                     <h2>Product Details</h2>

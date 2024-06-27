@@ -1,7 +1,7 @@
 const { db } = require("../database/mysql_connect.js");
 const getProducts = (req, res) => {
   const {user_id}=req.params;
-  const sql = "SELECT * FROM CART WHERE user_id=?";
+  const sql = "SELECT * FROM CARTS WHERE user_id=?";
   db.query(sql, [user_id],(err, result) => {
     if (err) return res.json({ Message: "Error in the server" });
     else {
@@ -11,8 +11,9 @@ const getProducts = (req, res) => {
   });
 };
 const addProductInCart = (req, res) => {
+  console.log(req.body)
   let { user_id, product, quantity, image } = req.body;
-  const sql0="select * from cart where user_id=? and product_id=?";
+  const sql0="select * from carts where user_id=? and product_id=?";
   let isExist=false;
   db.query(sql0,[user_id,product.id],(err,result)=>{
     if(err) return res.json({Message:"Error in the server"})
@@ -24,10 +25,10 @@ const addProductInCart = (req, res) => {
         console.log(quantity);
       }
       if(isExist===false){
-        const sql = "insert into cart values(?,?,?,?,?,?)";
+        const sql = "insert into carts values(?,?,?,?,?,?)";
         db.query(
           sql,
-          [user_id, product.id, product.name, image, product.price, quantity],
+          [user_id, product.id, image, product.name, product.price, quantity],
           (err, result) => {
             if (err) {
               console.log(err);
@@ -39,7 +40,7 @@ const addProductInCart = (req, res) => {
         );
       }
       else{
-        const sql = "update cart set quantity=? where user_id=? and product_id=?";
+        const sql = "update carts set quantity=? where user_id=? and product_id=?";
         db.query(sql, [quantity, user_id, product.id], (err, result) => {
         if (err) {
           console.log(err);
@@ -60,7 +61,7 @@ const manageQuantity = (req, res) => {
   console.log(req.body, req.params);
   let { user_id, product_id, quantity } = req.body;
   if(quantity===1 && sym==="-"){
-    const sql0="delete from cart where user_id=? and product_id=?";
+    const sql0="delete from carts where user_id=? and product_id=?";
     db.query(sql0,[user_id,product_id],(err,result)=>{
         if(err) return res.json({Message:"Error in the server"})
         else return res.json({Status:"success"})
@@ -69,7 +70,7 @@ const manageQuantity = (req, res) => {
 else{
     if (sym === "+") quantity = quantity + 1;
   else quantity = quantity - 1;
-  const sql = "update cart set quantity=? where user_id=? and product_id=?";
+  const sql = "update carts set quantity=? where user_id=? and product_id=?";
   db.query(sql, [quantity, user_id, product_id], (err, result) => {
     if (err) {
       console.log(err);
@@ -84,7 +85,7 @@ else{
 const removeProduct=(req,res)=>{
     const {user_id,product_id}=req.query;
     console.log(user_id,product_id)
-    const sql="delete from cart where user_id=? and product_id=?";
+    const sql="delete from carts where user_id=? and product_id=?";
     db.query(sql,[user_id,product_id],(err,result)=>{
       if(err) {
         console.log(err)
@@ -99,7 +100,7 @@ const removeProduct=(req,res)=>{
 const cartLength=(req,res)=>{
   console.log(req.params)
   const {id}=req.params;
-  const sql="SELECT * FROM cart WHERE user_id=?";
+  const sql="SELECT * FROM carts WHERE user_id=?";
   db.query(sql,[id],(err,result)=>{
     if(err) return res.json({Message:"Error in the server"})
     else return res.json({Length:result.length})

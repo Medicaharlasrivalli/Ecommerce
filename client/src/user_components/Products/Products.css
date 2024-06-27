@@ -3,6 +3,7 @@
     flex-wrap: wrap; /* Allow items to wrap on multiple lines */
     margin: 5px;
     margin-left: 135px;
+    height: 130px;
   }
 
   .product-item {
@@ -20,7 +21,8 @@
 
   .product-item h3 {
     margin-top: 5px;
-    font-size: small;
+    font-size: 8px;
+    font-weight: bold;
   }
   .product-grid :hover{
     background-color:lightgray;

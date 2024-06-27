@@ -16,7 +16,7 @@ function Edit() {
     const { id } = useParams();
     // const [file, setFile] = useState();
     useEffect(() => {
-        axios.get('http://localhost:8081/products/' + id).then(result => {
+        axios.get('http://localhost:8080/products/' + id).then(result => {
             setProduct(result.data[0])
             const img = result.data[0].image.split(',')
             setImages(img);
@@ -26,10 +26,15 @@ function Edit() {
     const handleSubmit = (e) => {
         e.preventDefault();
         const formData = new FormData();
-        if (newImages !== undefined) {
+        console.log(newImages);
+        if (newImages.length !== 0) {
             for (const i of newImages) {
-                formData.append('image', i);
+                formData.append('images', i);
             }
+        }
+        else {
+            console.log("No images");
+            formData.append('images', new Blob());
         }
         formData.append('image', product.image)
         formData.append('name', product.name);
@@ -37,7 +42,9 @@ function Edit() {
         formData.append('description', product.description);
         formData.append('stock', product.stock);
         // console.log(file);
-        axios.put('http://localhost:8081/products/edit/' + id, formData).then(result => {
+        console.log(formData);
+        axios.put('http://localhost:8080/products/edit/' + id, formData).then(result => {
+            console.log(formData)
             if (result.data.Status === 'success')
                 navigate('/admin_products')
         }).catch(err => console.log(err))
@@ -67,7 +74,7 @@ function Edit() {
                         <label>Current Image</label>
                         <br />{images.map(image => {
                             return (
-                                <img src={`http://localhost:8081/images/` + image} style={{ height: "25%", width: "25%" }} alt='' />
+                                <img src={`http://localhost:8080/images/` + image.replace(/\s/g, "")} style={{ height: "25%", width: "25%" }} alt='' />
                             )
                         })}
                     </div>
